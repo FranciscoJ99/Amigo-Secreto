@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Secreto Navideño</title>
+    <style>
+        /* General */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para mantener el efecto en pantalla */
+        }
+
+        /* Fondo animado */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            font-size: 1em;
+            color: white;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0.3;
+            }
+        }
+
+        /* Ajuste de animación */
+        .snowflake:nth-child(odd) {
+            animation-duration: 10s;
+            animation-delay: calc(var(--i) * 0.5s);
+        }
+
+        .snowflake:nth-child(even) {
+            animation-duration: 12s;
+            animation-delay: calc(var(--i) * 0.7s);
+        }
+
+        .snowflake:nth-child(3n) {
+            animation-duration: 8s;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #2d6a4f;
+            color: white;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .name-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+        .name {
+            background-color: #d62828;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: white;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+        .name:hover {
+            transform: scale(1.1);
+            background-color: #e63946;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 320px;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #2d6a4f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #2d6a4f;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #2d6a4f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #1b4332;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #d62828;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+    <script>
+        const amigosSecretos = {
+            "Karen": "Abi",
+            "Gerardo": "Ingrid",
+            "Ingrid": "Hugo",
+            "Karina": "Vivi",
+            "Yazmin": "Michel",
+            "Hugo": "Ignacio",
+            "Vivi": "Gerardo",
+            "Emmanuel": "Anita",
+            "Javier": "Dominit",
+            "Lorena": "Axel",
+            "Rodrigo": "Ignacio",
+            "Ignacio": "Karina",
+            "Anita": "Rodrigo",
+            "Abi": "Javier",
+            "Reina": "Yazmin",
+            "Francisco": "Lorena",
+            "Axel": "Francisco",
+            "Dominit": "Emmanuel",
+            "Alejandro": "Karen",
+            "Michel": "Alejandro"
+        };
+
+        function mostrarAmigoSecreto() {
+            const nombre = document.getElementById("nombre").value.trim();
+            const resultado = document.getElementById("resultado");
+            if (amigosSecretos[nombre]) {
+                resultado.textContent = `🎁 Tu amigo secreto es: ${amigosSecretos[nombre]} 🎄`;
+            } else {
+                resultado.textContent = "❄️ Nombre no encontrado. Intenta nuevamente.";
+            }
+        }
+
+        // Generar copos de nieve
+        function generarCopos() {
+            const body = document.querySelector('body');
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.textContent = '❄️';
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+                snowflake.style.setProperty('--i', i);
+                body.appendChild(snowflake);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', generarCopos);
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>🎄 Participantes 🎄</h2>
+        <div class="name-container">
+            <div class="name">Karen</div>
+            <div class="name">Gerardo</div>
+            <div class="name">Ingrid</div>
+            <div class="name">Karina</div>
+            <div class="name">Yazmin</div>
+            <div class="name">Hugo</div>
+            <div class="name">Vivi</div>
+            <div class="name">Emmanuel</div>
+            <div class="name">Javier</div>
+            <div class="name">Lorena</div>
+            <div class="name">Rodrigo</div>
+            <div class="name">Ignacio</div>
+            <div class="name">Anita</div>
+            <div class="name">Abi</div>
+            <div class="name">Reina</div>
+            <div class="name">Francisco</div>
+            <div class="name">Axel</div>
+            <div class="name">Dominit</div>
+            <div class="name">Alejandro</div>
+            <div class="name">Michel</div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Amigo Secreto Navideño 🎅</h1>
+        <p>Ingresa tu nombre para descubrir quién es tu amigo secreto:</p>
+        <input type="text" id="nombre" placeholder="Escribe tu nombre aquí">
+        <button onclick="mostrarAmigoSecreto()">Revelar Amigo Secreto</button>
+        <div id="resultado" class="result"></div>
+        <footer>🎄 ¡Felices fiestas a todos! 🎁</footer>
+    </div>
+</body>
+</html>
