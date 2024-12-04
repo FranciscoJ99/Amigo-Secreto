@@ -10,7 +10,8 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Para mantener el efecto en pantalla */
+            overflow: hidden;
+            background-color: #e0f7fa;
         }
 
         /* Fondo animado */
@@ -35,7 +36,6 @@
             }
         }
 
-        /* Ajuste de animación */
         .snowflake:nth-child(odd) {
             animation-duration: 10s;
             animation-delay: calc(var(--i) * 0.5s);
@@ -44,10 +44,6 @@
         .snowflake:nth-child(even) {
             animation-duration: 12s;
             animation-delay: calc(var(--i) * 0.7s);
-        }
-
-        .snowflake:nth-child(3n) {
-            animation-duration: 8s;
         }
 
         /* Sidebar */
@@ -62,6 +58,7 @@
             align-items: center;
             height: 100vh;
             position: fixed;
+            overflow-y: auto;
         }
         .sidebar h2 {
             font-size: 1.5em;
@@ -126,10 +123,37 @@
             color: #d62828;
             font-weight: bold;
         }
+
         footer {
             margin-top: 40px;
             font-size: 0.9em;
             color: #666;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            input {
+                width: 90%;
+                font-size: 1em;
+            }
+            button {
+                width: 90%;
+                font-size: 1em;
+                padding: 10px;
+            }
         }
     </style>
     <script>
@@ -166,7 +190,6 @@
             }
         }
 
-        // Generar copos de nieve
         function generarCopos() {
             const body = document.querySelector('body');
             for (let i = 0; i < 100; i++) {
