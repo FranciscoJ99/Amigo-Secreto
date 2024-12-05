@@ -67,16 +67,16 @@
         }
         .name-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+            gap: 25px; /* Separación entre los nombres */
             width: 100%;
         }
         .name {
             background-color: #d62828;
             padding: 10px;
-            border-radius: 20px;
+            border-radius: 10px;
             text-align: center;
-            font-size: 1.1em;
+            font-size: 1em;
             color: white;
             transition: transform 0.3s, background-color 0.3s;
             cursor: pointer;
@@ -158,26 +158,27 @@
     </style>
     <script>
         const amigosSecretos = {
-            "Karen": "Abi",
+            "Karen": "Francisco",
             "Gerardo": "Ingrid",
             "Ingrid": "Hugo",
             "Karina": "Vivi",
             "Yazmin": "Michel",
-            "Hugo": "Ignacio",
+            "Hugo": "Normita",
             "Vivi": "Gerardo",
             "Emmanuel": "Anita",
             "Javier": "Dominit",
             "Lorena": "Axel",
             "Rodrigo": "Ignacio",
-            "Ignacio": "Karina",
-            "Anita": "Rodrigo",
-            "Abi": "Javier",
-            "Reina": "Yazmin",
+            "Ignacio": "Rodrigo",
+            "Anita": "Reina",
+            "Abi": "Karen",
+            "Reina": "Abi",
             "Francisco": "Lorena",
-            "Axel": "Francisco",
+            "Axel": "Alejandro",
             "Dominit": "Emmanuel",
-            "Alejandro": "Karen",
-            "Michel": "Alejandro"
+            "Alejandro": "Yazmin",
+            "Michel": "Javier",
+            "Normita": "Karina"
         };
 
         function mostrarAmigoSecreto() {
@@ -230,6 +231,7 @@
             <div class="name">Dominit</div>
             <div class="name">Alejandro</div>
             <div class="name">Michel</div>
+            <div class="name">Normita</div>
         </div>
     </div>
     <div class="content">
