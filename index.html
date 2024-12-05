@@ -184,8 +184,10 @@
         function mostrarAmigoSecreto() {
             const nombre = document.getElementById("nombre").value.trim();
             const resultado = document.getElementById("resultado");
+            const boton = document.getElementById("revelar-btn");
             if (amigosSecretos[nombre]) {
                 resultado.textContent = `🎁 Tu amigo secreto es: ${amigosSecretos[nombre]} 🎄`;
+                boton.style.display = "none"; // Oculta el botón después de mostrar el resultado
             } else {
                 resultado.textContent = "❄️ Nombre no encontrado. Intenta nuevamente.";
             }
@@ -238,7 +240,7 @@
         <h1>Amigo Secreto Navideño 🎅</h1>
         <p>Ingresa tu nombre para descubrir quién es tu amigo secreto:</p>
         <input type="text" id="nombre" placeholder="Escribe tu nombre aquí">
-        <button onclick="mostrarAmigoSecreto()">Revelar Amigo Secreto</button>
+        <button id="revelar-btn" onclick="mostrarAmigoSecreto()">Revelar Amigo Secreto</button>
         <div id="resultado" class="result"></div>
         <footer>🎄 ¡Felices fiestas a todos! 🎁</footer>
     </div>
